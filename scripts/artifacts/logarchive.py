@@ -1916,6 +1916,111 @@ __artifacts_v2__ = {
             "hc_ios26_sysdiag": "iOS 26.6 | 1 row",
         },
     },
+    # ---- Network connection and NetworkExtension session artifacts (begin) ----
+    "logarchive_network_connections": {
+        "name": "logarchive network connections",
+        "description": "Unified log lines of the com.apple.network connection category, counted per "
+                       "writing process, endpoint, port, link and interface, with the first and last "
+                       "line time, the states and the bundle ids the lines name. A row summarizes "
+                       "many log lines and is not one connection.",
+        "author": "@danjethh, Claude",
+        "creation_date": "2026-10-20",
+        "last_update_date": "2026-10-20",
+        "requirements": "logarchive module must be executed first",
+        "category": "Unified Logs",
+        "notes": "Each row groups the connection-category lines (subsystem com.apple.network, category "
+                 "connection) that one process wrote for the same endpoint and port over the same link and "
+                 "interface. Records counts log lines, not connections, sessions, packets or bytes: a "
+                 "connection writes several lines as it changes state, and its child connections ('C1.1') "
+                 "write their own. First Seen and Last Seen are the earliest and latest record time as stored, "
+                 "in UTC, among those lines; they do not show that traffic passed in between. A line with a "
+                 "timestamp that is not a number is counted and left out of the range. Process Image Path is "
+                 "the process that wrote the line, not necessarily the application the connection was opened "
+                 "for; the only app attribution is Bundle IDs (as logged), the 'bundle id:' text some lines "
+                 "carry (sorted, the first 20 and a count of the rest), and most lines carry none. Endpoint, "
+                 "Port and Endpoint Form come from the first '[C<id> ...' header in the line. 'Host tag', "
+                 "'IPv4 tag' and 'IPv6 tag' are a Hostname#, IPv4# or IPv6# word followed by hexadecimal "
+                 "digits that the log prints in place of a name or an address; they are copied as logged and "
+                 "not resolved, and what they stand for is not established here. 'Host name' is a name and "
+                 "'IPv4 address' and 'IPv6 address' are literal addresses. In the tested samples the tag form "
+                 "was the large majority of lines that name an endpoint (iOS 27.0: 1,235,369 of 1,238,152, "
+                 "with 1,561,241 connection lines in all; iOS 26.6, newest 14 Persist files: 46,238 of "
+                 "56,774), and no tag was seen under two processes (0 of 980 and 0 of 776 distinct tags), so "
+                 "rows of different processes cannot be matched on a tag. Whether the same name gets the same "
+                 "tag in one process was not tested. Lines with no recognised endpoint (state reports such as "
+                 "'reporting state ready', event lines, truncated text) are counted in a row per process with "
+                 "Endpoint Form 'No endpoint in line', so that Records adds up to the connection lines read "
+                 "(323,089 of 1,561,241 on iOS 27.0); which endpoint such a line belongs to is not worked out. "
+                 "Link and Interface are the 'uses' word and the interface name in the line's path description "
+                 "('uses cell', 'interface: pdp_ip0'); they are blank on lines without a path description "
+                 "(97.8% of the iOS 27.0 lines), so a blank is not evidence about the link used. An interface "
+                 "such as utun4 is the name as logged; what it is is not established here. States Seen lists, "
+                 "as logged, the state word after the endpoint (initial, in_progress, waiting, preparing, "
+                 "ready, failed, cancelled) or the closing word of a protocol line (start, restart, cancel, "
+                 "cancelled, dealloc, 'is already cancelled, ignoring cancel'), separated by semicolons. "
+                 "Nothing is filtered or labelled as system or vendor traffic: one process wrote 92.4% of the "
+                 "iOS 27.0 lines, so filter on Process Image Path, Endpoint Form, Bundle IDs and Records. A "
+                 "row is a lead: it does not show that content was exchanged or that a person initiated the "
+                 "connection, and an absent row does not show that no connection was made, since only lines "
+                 "inside the log's window and of this category are read. Not read: the tcp, quic, boringssl, "
+                 "path and activity categories of the same subsystem, which carry no endpoint header or hold "
+                 "<private> in the path field in the lines sampled. This artifact reads the logarchive table "
+                 "directly rather than logarchive_artifacts, so no marker was added to the collection stage; "
+                 "it runs after logarchive_artifacts has written its table. Run time on the iOS 27.0 store "
+                 "(42,588,594 records, 1,561,241 read): 18 s to aggregate, 23 s for an independent SQL count; "
+                 "the import before it took 49 minutes. The sum of Records equalled an independent SQL count "
+                 "per process on the iOS 27.0 store and on two bounded windows of the iOS 27.0 and iOS 26.6 "
+                 "stores. Message shapes were read on iOS 26.6 and iOS 27.0 sysdiagnose logs natively decoded "
+                 "with unifiedlog_iterator; the way these lines appear in a 'log show' export was not "
+                 "examined. Those images are not in the public corpus and no fixture from them is committed. "
+                 "The test fixture is synthetic, with invented process paths and bundle ids, example domains "
+                 "and documentation addresses.",
+        "paths": None,
+        "output_types": "standard",
+        "artifact_icon": "wifi",
+    },
+    "logarchive_network_sessions": {
+        "name": "logarchive NetworkExtension session events",
+        "description": "Unified log lines from the nesessionmanager process in the "
+                       "com.apple.networkextension subsystem, grouped per process and message "
+                       "template, with the number of lines, the first and last time and the first and "
+                       "last message as logged.",
+        "author": "@danjethh, Claude",
+        "creation_date": "2026-10-20",
+        "last_update_date": "2026-10-20",
+        "requirements": "logarchive module must be executed first",
+        "category": "Unified Logs",
+        "notes": "Each row groups the com.apple.networkextension lines written by the nesessionmanager process "
+                 "by message template: object addresses (0x...) and numbers that stand alone are replaced by "
+                 "<hex> and <n> to make the key, while UUIDs and the digits inside a word such as utun4 are "
+                 "kept. Records is the number of lines. First Seen and Last Seen are the earliest and latest "
+                 "record time as stored, in UTC, and First Message and Last Message are the lines at those "
+                 "times as logged, so a number the template hides (a process id in a start command, say) can "
+                 "be read there. The key includes the session name and UUID when the line carries them "
+                 "(NESMVPNSession[<kind>:<name>:<UUID>:...]), so sessions are not merged. In the tested "
+                 "samples the lines are session state changes (Entering and Leaving a state), start commands "
+                 "that name the requesting process and its id, on-demand start messages, tunnel interface "
+                 "set-up and tear-down, and default-drop settings. A line shows what the session manager "
+                 "logged. It does not show that traffic was routed through a tunnel, who configured the "
+                 "session, or whether a person or the system started it. On the iOS 27.0 store the process "
+                 "wrote 24,282 such lines in 685 templates (11 s to aggregate); the whole subsystem held "
+                 "114,940 lines. Not read: other processes in the subsystem (on the iOS 27.0 store the largest "
+                 "was a telephony daemon writing 'NEPathEvent Cellular Failed for <bundle id>' lines, 69,761 "
+                 "of them, then neagent, nehelper, SpringBoard, locationd and a third-party packet-tunnel "
+                 "extension), and nesessionmanager lines under other subsystems. A session line can be missing "
+                 "from the log's window, so an empty result is not evidence that no VPN or proxy was "
+                 "configured or used. The sum of Records equalled an independent SQL count on the iOS 27.0 "
+                 "store (24,282) and on bounded windows of both stores. This artifact reads the logarchive "
+                 "table directly and runs after logarchive_artifacts has written its table. Message shapes "
+                 "were read on iOS 26.6 and iOS 27.0 sysdiagnose logs natively decoded with "
+                 "unifiedlog_iterator; the way these lines appear in a 'log show' export was not examined. "
+                 "Those images are not in the public corpus and no fixture from them is committed. The test "
+                 "fixture is synthetic, with invented process paths, session names and UUIDs.",
+        "paths": None,
+        "output_types": "standard",
+        "artifact_icon": "lock",
+    },
+    # ---- Network connection and NetworkExtension session artifacts (end) ----
 }
 
 import os
@@ -3634,3 +3739,196 @@ def logarchive_recording_indicator(context):
     data_list = [(_report_time(record[0]), record[1], record[2], record[3], record[6])
                  for record in get_sqlite_db_records(source_path, query)]
     return RECORDING_INDICATOR_HEADERS, data_list, source_path
+
+
+# ---- Network connection and NetworkExtension session artifacts (begin) ----
+# These two read the imported logarchive table directly, not the logarchive_artifacts table: a
+# marker for the connection lines would copy over a million rows into that table (one process
+# wrote most of them on the 27.0 image tested), and every artifact that filters it would then
+# scan them. The two WHERE clauses are exact comparisons on the subsystem and category columns.
+NETWORK_CONNECTION_WHERE = "subsystem = 'com.apple.network' AND category = 'connection'"
+NETWORK_SESSION_WHERE = ("subsystem = 'com.apple.networkextension' "
+                         "AND process_image_path LIKE '%/nesessionmanager'")
+
+# A connection header is '[C<id> [<UUID or dry-run>...] <endpoint> <state or protocols>...'. The id is
+# 'C' and a number, with '.<n>' parts for child connections. The line may begin with a function
+# name; the first header is the one read. A line such as '[C1] reporting state ready' has no
+# endpoint and does not match.
+NETWORK_HEADER = re.compile(
+    r'\[C\d+(?:\.\d+)*(?: (?:[0-9A-F]{32}|dry-run))* (?P<endpoint>[^\s\]]+)(?P<rest>.*)', re.DOTALL)
+NETWORK_TAG = re.compile(r'^(?P<kind>Hostname|IPv4|IPv6)#(?P<tag>[0-9A-Fa-f]+)[:.](?P<port>\d+)$')
+NETWORK_IPV4 = re.compile(r'^(?P<host>\d{1,3}(?:\.\d{1,3}){3})[:.](?P<port>\d+)$')
+NETWORK_IPV6 = re.compile(
+    r'^(?P<host>(?=[0-9A-Fa-f:.]*:[0-9A-Fa-f:.]*:)[0-9A-Fa-f:.]+?)\.(?P<port>\d+)$')
+NETWORK_NAME = re.compile(r'^(?P<host>[A-Za-z0-9_](?:[A-Za-z0-9_.-]*[A-Za-z0-9_])?):(?P<port>\d+)$')
+NETWORK_STATE = re.compile(r' (initial|in_progress|waiting|preparing|ready|failed|cancelled)(?= )')
+NETWORK_ACTION = re.compile(
+    r'\] (start|restart|cancel|cancelled|dealloc|is already cancelled, ignoring (?:forced )?cancel)\Z')
+NETWORK_INTERFACE = re.compile(r'interface: ([A-Za-z0-9_]+)')
+NETWORK_LINK = re.compile(r', uses ([A-Za-z]+)')
+NETWORK_BUNDLE = re.compile(r'bundle id: ([^,\]]+)')
+
+NETWORK_FORM_NONE = 'No endpoint in line'
+NETWORK_BUNDLE_LIMIT = 20
+
+NETWORK_CONNECTION_HEADERS = (
+    ('First Seen', 'datetime'), ('Last Seen', 'datetime'), 'Records', 'Process Image Path',
+    'Endpoint (as logged)', 'Port (as logged)', 'Endpoint Form', 'Link (as logged)',
+    'Interface (as logged)', 'States Seen (as logged)', 'Bundle IDs (as logged)')
+
+NETWORK_SESSION_HEADERS = (
+    ('First Seen', 'datetime'), ('Last Seen', 'datetime'), 'Records', 'Process Image Path',
+    'Event Template', 'First Message (as logged)', 'Last Message (as logged)')
+
+# Replace what varies from line to line: object addresses and numbers standing alone. A UUID is
+# kept, since it names a session or configuration, and so are the digits inside a word such as
+# utun4 or a bundle id.
+NETWORK_VARIABLE = re.compile(
+    r'([0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12})'
+    r'|\b0x[0-9A-Fa-f]+\b|(?<![A-Za-z0-9])\d+(?![A-Za-z0-9])')
+
+
+def _network_is_time(value):
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def _network_endpoint(token):
+    """(endpoint, port, form) of a connection header's endpoint token, or None when it is none.
+
+    Hostname#, IPv4# and IPv6# followed by hexadecimal digits are tags the log prints in place of
+    a name or an address; they are kept as logged and not resolved. A bare name or an address is
+    kept as logged too. A token of another shape is not an endpoint.
+    """
+    tag = NETWORK_TAG.match(token)
+    if tag:
+        form = {'Hostname': 'Host tag', 'IPv4': 'IPv4 tag', 'IPv6': 'IPv6 tag'}[tag.group('kind')]
+        return f"{tag.group('kind')}#{tag.group('tag')}", tag.group('port'), form
+    for pattern, form in ((NETWORK_IPV4, 'IPv4 address'), (NETWORK_IPV6, 'IPv6 address'),
+                          (NETWORK_NAME, 'Host name')):
+        found = pattern.match(token)
+        if found:
+            return found.group('host'), found.group('port'), form
+    return None
+
+
+def _network_connection_fields(message):
+    """The fields of one connection line: endpoint, port, form, link, interface, state, bundle id.
+
+    Every field is the text as logged, or '' when the line does not hold it. The state is the word
+    after the endpoint when it is one of the connection states, otherwise the closing action of
+    a line that describes the protocols ('start', 'cancel' and so on).
+    """
+    text = message if isinstance(message, str) else ''
+    header = NETWORK_HEADER.search(text)
+    endpoint = _network_endpoint(header.group('endpoint')) if header else None
+    if endpoint is None:
+        return ('', '', NETWORK_FORM_NONE, '', '', '', '')
+    rest = header.group('rest')
+    state = NETWORK_STATE.match(rest)
+    if state:
+        word = state.group(1)
+    else:
+        action = NETWORK_ACTION.search(rest)
+        word = action.group(1) if action else ''
+    interface = NETWORK_INTERFACE.search(rest)
+    link = NETWORK_LINK.search(rest)
+    bundle = NETWORK_BUNDLE.search(rest)
+    return (endpoint[0], endpoint[1], endpoint[2], link.group(1) if link else '',
+            interface.group(1) if interface else '', word, bundle.group(1).strip() if bundle else '')
+
+
+def _network_connection_rows(records):
+    """Aggregate (timestamp, process path, message) records into one row per process, endpoint,
+    port, link and interface; returns (rows, number of records read).
+
+    Records, First Seen and Last Seen are over the lines grouped under the row; a timestamp that
+    is not a number is ignored for the range but the line is still counted. Rows are sorted by
+    process, then by Records, largest first.
+    """
+    groups = {}
+    total = 0
+    for timestamp, process, message in records:
+        total += 1
+        host, port, form, link, interface, state, bundle = _network_connection_fields(message)
+        key = (process or '', host, port, form, link, interface)
+        group = groups.get(key)
+        if group is None:
+            group = groups[key] = {'first': None, 'last': None, 'records': 0, 'states': set(),
+                                   'bundles': set()}
+        group['records'] += 1
+        if _network_is_time(timestamp):
+            group['first'] = timestamp if group['first'] is None else min(group['first'], timestamp)
+            group['last'] = timestamp if group['last'] is None else max(group['last'], timestamp)
+        if state:
+            group['states'].add(state)
+        if bundle:
+            group['bundles'].add(bundle)
+    rows = []
+    for key, group in sorted(groups.items(), key=lambda item: (item[0][0], -item[1]['records'], item[0][1:])):
+        bundles = sorted(group['bundles'])
+        listed = ', '.join(bundles[:NETWORK_BUNDLE_LIMIT])
+        if len(bundles) > NETWORK_BUNDLE_LIMIT:
+            listed += f' (+{len(bundles) - NETWORK_BUNDLE_LIMIT} more)'
+        rows.append((_report_time(group['first']), _report_time(group['last']), group['records'],
+                     key[0], key[1], key[2], key[3], key[4], key[5], '; '.join(sorted(group['states'])),
+                     listed))
+    return rows, total
+
+
+def _network_event_template(message):
+    """A message with object addresses and stand-alone numbers replaced by <hex> and <n>."""
+    return NETWORK_VARIABLE.sub(
+        lambda found: found.group(1) or ('<hex>' if found.group(0).startswith('0x') else '<n>'),
+        message if isinstance(message, str) else '')
+
+
+def _network_session_rows(records):
+    """Aggregate (timestamp, process path, message) records into one row per process and event
+    template, with the first and last message as logged; returns (rows, number of records read).
+    """
+    groups = {}
+    total = 0
+    for timestamp, process, message in records:
+        total += 1
+        text = message if isinstance(message, str) else ''
+        key = (process or '', _network_event_template(text))
+        group = groups.get(key)
+        if group is None:
+            group = groups[key] = {'first': None, 'last': None, 'records': 0,
+                                   'first_message': text, 'last_message': text}
+        group['records'] += 1
+        if _network_is_time(timestamp):
+            if group['first'] is None or timestamp < group['first']:
+                group['first'], group['first_message'] = timestamp, text
+            if group['last'] is None or timestamp > group['last']:
+                group['last'], group['last_message'] = timestamp, text
+    rows = [(_report_time(group['first']), _report_time(group['last']), group['records'], key[0], key[1],
+             group['first_message'], group['last_message'])
+            for key, group in sorted(groups.items(),
+                                     key=lambda item: (item[0][0], -item[1]['records'], item[0][1]))]
+    return rows, total
+
+
+def _network_records(context, where_clause):
+    """The table's path and a stream of (timestamp, process path, message) matching where_clause."""
+    source_path = get_file_path(context.get_files_found(), '_lava_artifacts.db')
+    query = ('SELECT timestamp, process_image_path, event_message FROM logarchive '
+             f'WHERE {where_clause}')
+    return source_path, ((row[0], row[1], row[2]) for row in get_sqlite_db_records(source_path, query))
+
+
+@artifact_processor
+def logarchive_network_connections(context):
+    source_path, records = _network_records(context, NETWORK_CONNECTION_WHERE)
+    rows, total = _network_connection_rows(records)
+    logfunc(f'logarchive network connections: {total:,} lines read, {len(rows):,} rows')
+    return NETWORK_CONNECTION_HEADERS, rows, source_path
+
+
+@artifact_processor
+def logarchive_network_sessions(context):
+    source_path, records = _network_records(context, NETWORK_SESSION_WHERE)
+    rows, total = _network_session_rows(records)
+    logfunc(f'logarchive NetworkExtension session events: {total:,} lines read, {len(rows):,} rows')
+    return NETWORK_SESSION_HEADERS, rows, source_path
+# ---- Network connection and NetworkExtension session artifacts (end) ----

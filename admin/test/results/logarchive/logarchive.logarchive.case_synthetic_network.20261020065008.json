@@ -1,0 +1,506 @@
+{
+  "metadata": {
+    "module_name": "logarchive",
+    "artifact_name": "logarchive",
+    "function_name": "logarchive",
+    "case_number": "case_synthetic_network",
+    "number_of_columns": 8,
+    "number_of_rows": 47,
+    "total_data_size_bytes": 9461,
+    "media_checkins": 0,
+    "media_embedded_checkins": 0,
+    "input_zip_path": "admin\\test\\cases\\data\\logarchive\\testdata.logarchive.logarchive.case_synthetic_network.zip",
+    "start_time": "2026-10-20T06:50:08.448177+00:00",
+    "end_time": "2026-10-20T06:50:08.573335+00:00",
+    "run_time_seconds": 0.016518354415893555,
+    "last_commit": {
+      "hash": "fddd33b2436def34272799036edc6dad41208fec",
+      "author_name": "Brigs",
+      "author_email": "abrignoni@gmail.com",
+      "date": "2026-10-18T16:20:57-04:00",
+      "message": "executed apps: restate notes on 14 images, name the column Application"
+    }
+  },
+  "headers": [
+    "Timestamp",
+    "Row Number",
+    "Process Image Path",
+    "Process ID",
+    "Subsystem",
+    "Category",
+    "Event Message",
+    "Trace ID"
+  ],
+  "data": [
+    [
+      1773500410,
+      1,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "[C1 Hostname#0badc0de:443 initial path ((null))] event: path:start @0.000s",
+      "1000"
+    ],
+    [
+      1773500410,
+      2,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "[C1 Hostname#0badc0de:443 in_progress parent-flow (unsatisfied (No network route))] event: flow:start_child @0.000s",
+      "1001"
+    ],
+    [
+      1773500410,
+      3,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "[C1 Hostname#0badc0de:443 waiting parent-flow (unsatisfied (No network route))] event: flow:child_failed @0.001s",
+      "1002"
+    ],
+    [
+      1773500410,
+      4,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "nw_connection_report_state_with_handler_on_nw_queue [C1] reporting state waiting",
+      "1003"
+    ],
+    [
+      1773500411,
+      5,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "[C2 00000000000000000000000000000AA1 Hostname#0badc0de:443 tcp, tls, bundle id: com.example.mail, account id: 1a2b3c4d, attribution: website] start",
+      "1004"
+    ],
+    [
+      1773500411,
+      6,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "[C2 Hostname#0badc0de:443 tcp, tls, bundle id: com.example.mail, account id: 1a2b3c4d, attribution: website] cancelled",
+      "1005"
+    ],
+    [
+      1773500412,
+      7,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "[C3 Hostname#0badc0de:443 tcp, tls, bundle id: com.example.mail.shared, account id: 1a2b3c4d, attribution: website] is already cancelled, ignoring cancel",
+      "1006"
+    ],
+    [
+      1773500420,
+      8,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "[C4 Hostname#0badc0de:443 ready parent-flow (satisfied (Path is satisfied), interface: utun4[nr_sa_sub6], ipv4, dns, uses cell, estimated upload: 1048576Bps, estimated download: 16777216Bps, LQM: moderate)] event: path:satisfied @0.020s",
+      "1007"
+    ],
+    [
+      1773500421,
+      9,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "[C5 Hostname#0badc0de:443 ready parent-flow (satisfied (Path is satisfied), interface: pdp_ip0[nr_sa_sub6], ipv4, dns, uses cell, estimated upload: 1048576Bps, estimated download: 16777216Bps, LQM: moderate)] event: path:satisfied @0.020s",
+      "1008"
+    ],
+    [
+      1773500422,
+      10,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "[C6 Hostname#0badc0de:443 ready parent-flow (satisfied (Path is satisfied), interface: en0[nr_sa_sub6], ipv4, dns, uses wifi, estimated upload: 1048576Bps, estimated download: 16777216Bps, LQM: moderate)] event: path:satisfied @0.020s",
+      "1009"
+    ],
+    [
+      1773500405,
+      11,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "[C1 Hostname#0badc0de:443 initial parent-flow ((null))] event: path:start @0.000s",
+      "1010"
+    ],
+    [
+      1773500430,
+      12,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "[C1] event: client:connection_idle @0.512s",
+      "1011"
+    ],
+    [
+      1773500431,
+      13,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "connection",
+      "nw_connection_report_state_with_handler_on_nw_queue [C2] reporting state ready",
+      "1012"
+    ],
+    [
+      1773500440,
+      14,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "[C1 www.example.com:443 initial parent-flow ((null))] event: path:start @0.000s",
+      "1013"
+    ],
+    [
+      1773500441,
+      15,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "[C1 www.example.com:443 ready parent-flow (satisfied (Path is satisfied), interface: en0[nr_sa_sub6], ipv4, dns, uses wifi, estimated upload: 1048576Bps, estimated download: 16777216Bps, LQM: moderate)] event: path:satisfied @0.030s",
+      "1014"
+    ],
+    [
+      1773500441,
+      16,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "[C1 www.example.com:443 ready parent-flow (satisfied (Path is satisfied), interface: en0[nr_sa_sub6], ipv4, dns, uses wifi, estimated upload: 1048576Bps, estimated download: 16777216Bps, LQM: moderate)] event: path:satisfied @0.031s",
+      "1015"
+    ],
+    [
+      1773500442,
+      17,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "[C2 cdn.example.org:8443 initial path ((null))] event: path:start @0.000s",
+      "1016"
+    ],
+    [
+      1773500443,
+      18,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "[C3.1 192.0.2.10:443 initial path ((null))] event: path:start @0.000s",
+      "1017"
+    ],
+    [
+      1773500444,
+      19,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "[C4.1.1 2001:db8::7.443 in_progress channel-flow (satisfied (Path is satisfied), interface: en0[nr_sa_sub6], ipv4, dns, uses wifi, estimated upload: 1048576Bps, estimated download: 16777216Bps, LQM: moderate)] event: path:satisfied @0.040s",
+      "1018"
+    ],
+    [
+      1773500445,
+      20,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "[C5 IPv4#5ca1ab1e:443 initial path ((null))] event: path:start @0.000s",
+      "1019"
+    ],
+    [
+      1773500446,
+      21,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "[C6 IPv6#cafef00d.443 initial path ((null))] event: path:start @0.000s",
+      "1020"
+    ],
+    [
+      1773500447,
+      22,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "nw_endpoint_resolver_update [C7.1 dry-run Hostname#feedface:443 in_progress resolver (satisfied (Path is satisfied), interface: pdp_ip0[nr_sa_sub6], ipv4, dns, uses cell, estimated upload: 1048576Bps, estimated download: 16777216Bps, LQM: moderate)] Adding endpoint handler for IPv6#a56fa9a9.443",
+      "1021"
+    ],
+    [
+      1773500448,
+      23,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "[C1] event: client:connection_idle @0.512s",
+      "1022"
+    ],
+    [
+      1773500450,
+      24,
+      "/usr/libexec/fakesessiond",
+      2301,
+      "com.apple.network",
+      "connection",
+      "[C1 Hostname#0badc0de:443 tcp, tls, bundle id: com.example.zeta, account id: 1a2b3c4d, attribution: website] start",
+      "1023"
+    ],
+    [
+      1773500451,
+      25,
+      "/usr/libexec/fakesessiond",
+      2301,
+      "com.apple.network",
+      "connection",
+      "[C2 Hostname#0badc0de:443 tcp, tls, bundle id: com.example.alpha, account id: 1a2b3c4d, attribution: website] start",
+      "1024"
+    ],
+    [
+      1773500452,
+      26,
+      "/usr/libexec/fakesessiond",
+      2301,
+      "com.apple.network",
+      "connection",
+      "[C3 Hostname#0badc0de:443 tcp, tls, bundle id: com.example.alpha, account id: 1a2b3c4d, attribution: website] cancel",
+      "1025"
+    ],
+    [
+      1773500460,
+      27,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "[C9 ",
+      "1026"
+    ],
+    [
+      1773500461,
+      28,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "[C8 not-an-endpoint initial path ((null))] event: path:start @0.000s",
+      "1027"
+    ],
+    [
+      1773500462,
+      29,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "[C7 Hostname#0badc0de initial path ((null))] event: path:start @0.000s",
+      "1028"
+    ],
+    [
+      1773500463,
+      30,
+      "/private/var/containers/Bundle/Application/FAKE0000-0000-0000-0000-000000000011/FakeBrowser.app/FakeBrowser",
+      2201,
+      "com.apple.network",
+      "connection",
+      "",
+      "1029"
+    ],
+    [
+      1773500470,
+      31,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "tcp",
+      "[C1 Hostname#0badc0de:443 initial path ((null))] event: path:start @0.000s",
+      "1030"
+    ],
+    [
+      1773500471,
+      32,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network.ServiceDiscovery",
+      "connection",
+      "[C1 Hostname#0badc0de:443 initial path ((null))] event: path:start @0.000s",
+      "1031"
+    ],
+    [
+      1773500472,
+      33,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "Connection",
+      "[C1 Hostname#0badc0de:443 initial path ((null))] event: path:start @0.000s",
+      "1032"
+    ],
+    [
+      1773500473,
+      34,
+      "/usr/libexec/fakemaild",
+      2101,
+      "com.apple.network",
+      "",
+      "[C1 Hostname#0badc0de:443 initial path ((null))] event: path:start @0.000s",
+      "1033"
+    ],
+    [
+      1773500499,
+      35,
+      "/usr/libexec/nesessionmanager",
+      2401,
+      "com.apple.networkextension",
+      "",
+      "applyIPDefaultDrop: IP Drop-All disabled",
+      "1034"
+    ],
+    [
+      1773500500,
+      36,
+      "/usr/libexec/nesessionmanager",
+      2401,
+      "com.apple.networkextension",
+      "",
+      "NESMVPNSession[Primary Tunnel:Fake VPN:00000000-0000-4000-8000-0000000000aa:(null)]: Received a start command from fakemaild[321]",
+      "1035"
+    ],
+    [
+      1773500501,
+      37,
+      "/usr/libexec/nesessionmanager",
+      2401,
+      "com.apple.networkextension",
+      "",
+      "NESMVPNSession[Primary Tunnel:Fake VPN:00000000-0000-4000-8000-0000000000aa:(null)]: Received a start command from fakemaild[322]",
+      "1036"
+    ],
+    [
+      1773500502,
+      38,
+      "/usr/libexec/nesessionmanager",
+      2401,
+      "com.apple.networkextension",
+      "",
+      "NESMVPNSession[Primary Tunnel:Fake VPN:00000000-0000-4000-8000-0000000000aa:(null)]: Entering state NESMVPNSessionStateStarting",
+      "1037"
+    ],
+    [
+      1773500503,
+      39,
+      "/usr/libexec/nesessionmanager",
+      2401,
+      "com.apple.networkextension",
+      "",
+      "NESMVPNSession[Primary Tunnel:Fake VPN:00000000-0000-4000-8000-0000000000aa:(null)]: Entering state NESMVPNSessionStateStopping, timeout 20 seconds",
+      "1038"
+    ],
+    [
+      1773500504,
+      40,
+      "/usr/libexec/nesessionmanager",
+      2401,
+      "com.apple.networkextension",
+      "",
+      "<NESMServer: 0x7f0c44001200>: Register Enterprise VPN Session: NESMVPNSession[Primary Tunnel:Fake VPN:00000000-0000-4000-8000-0000000000aa:(null)]",
+      "1039"
+    ],
+    [
+      1773500505,
+      41,
+      "/usr/libexec/nesessionmanager",
+      2401,
+      "com.apple.networkextension",
+      "",
+      "Tearing down utun4",
+      "1040"
+    ],
+    [
+      1773500498,
+      42,
+      "/usr/libexec/nesessionmanager",
+      2401,
+      "com.apple.networkextension",
+      "",
+      "NESMVPNSession[Primary Tunnel:Fake VPN:00000000-0000-4000-8000-0000000000aa:(null)]: Received a start command from fakemaild[320]",
+      "1041"
+    ],
+    [
+      1773500506,
+      43,
+      "/usr/libexec/nesessionmanager",
+      2401,
+      "com.apple.networkextension",
+      "Large",
+      "Tearing down utun4",
+      "1042"
+    ],
+    [
+      1773500510,
+      44,
+      "/usr/libexec/fakenehelper",
+      2501,
+      "com.apple.networkextension",
+      "",
+      "Setting UUID cache generation to 7",
+      "1043"
+    ],
+    [
+      1773500511,
+      45,
+      "/usr/libexec/nesessionmanager",
+      2401,
+      "com.apple.xpc",
+      "connection",
+      "NESMVPNSession[Primary Tunnel:Fake VPN:00000000-0000-4000-8000-0000000000aa:(null)]: Entering state NESMVPNSessionStateStarting",
+      "1044"
+    ],
+    [
+      1773500512,
+      46,
+      "/usr/libexec/nesessionmanager2",
+      2402,
+      "com.apple.networkextension",
+      "",
+      "Tearing down utun4",
+      "1045"
+    ],
+    [
+      1773500520,
+      47,
+      "/usr/libexec/fakeshot",
+      2601,
+      "com.example.fake",
+      "",
+      "Take screenshot",
+      "1046"
+    ]
+  ]
+}
