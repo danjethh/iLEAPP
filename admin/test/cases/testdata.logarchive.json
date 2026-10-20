@@ -5,13 +5,13 @@
     "make_data": {
       "input_data_path": "logarchive_SYNTHETIC_capture_input.zip",
       "os": "Windows-10-10.0.19045-SP0",
-      "timestamp": "2026-10-19T16:25:05.336359",
+      "timestamp": "2026-10-20T10:50:06.702146",
       "last_commit": {
-        "hash": "fddd33b2436def34272799036edc6dad41208fec",
-        "author_name": "Brigs",
-        "author_email": "abrignoni@gmail.com",
-        "date": "2026-10-18T16:20:57-04:00",
-        "message": "executed apps: restate notes on 14 images, name the column Application"
+        "hash": "b71f6ecdb4b7a6a5095d6953705bd1555179b19a",
+        "author_name": "danjethh",
+        "author_email": "danjethh@gmail.com",
+        "date": "2026-10-20T10:31:43-04:00",
+        "message": "logarchive: network connection attribution and NetworkExtension session event artifacts"
       }
     },
     "artifacts": {
@@ -293,6 +293,16 @@
         "search_patterns": null,
         "file_count": 0,
         "note": "No responsive files found for this artifact"
+      },
+      "logarchive_network_connections": {
+        "search_patterns": null,
+        "file_count": 0,
+        "note": "No responsive files found for this artifact"
+      },
+      "logarchive_network_sessions": {
+        "search_patterns": null,
+        "file_count": 0,
+        "note": "No responsive files found for this artifact"
       }
     },
     "os_name": "iOS",
@@ -304,13 +314,13 @@
     "make_data": {
       "input_data_path": "logarchive_SYNTHETIC_network_input.zip",
       "os": "Windows-10-10.0.19045-SP0",
-      "timestamp": "2026-10-20T06:50:07.193657",
+      "timestamp": "2026-10-20T10:50:07.734854",
       "last_commit": {
-        "hash": "fddd33b2436def34272799036edc6dad41208fec",
-        "author_name": "Brigs",
-        "author_email": "abrignoni@gmail.com",
-        "date": "2026-10-18T16:20:57-04:00",
-        "message": "executed apps: restate notes on 14 images, name the column Application"
+        "hash": "b71f6ecdb4b7a6a5095d6953705bd1555179b19a",
+        "author_name": "danjethh",
+        "author_email": "danjethh@gmail.com",
+        "date": "2026-10-20T10:31:43-04:00",
+        "message": "logarchive: network connection attribution and NetworkExtension session event artifacts"
       }
     },
     "artifacts": {
@@ -574,6 +584,21 @@
         "note": "No responsive files found for this artifact"
       },
       "logarchive_urlopens": {
+        "search_patterns": null,
+        "file_count": 0,
+        "note": "No responsive files found for this artifact"
+      },
+      "logarchive_capture_sessions": {
+        "search_patterns": null,
+        "file_count": 0,
+        "note": "No responsive files found for this artifact"
+      },
+      "logarchive_capture_streaming": {
+        "search_patterns": null,
+        "file_count": 0,
+        "note": "No responsive files found for this artifact"
+      },
+      "logarchive_recording_indicator": {
         "search_patterns": null,
         "file_count": 0,
         "note": "No responsive files found for this artifact"

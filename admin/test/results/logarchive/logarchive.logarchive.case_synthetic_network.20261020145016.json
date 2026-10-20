@@ -9,16 +9,16 @@
     "total_data_size_bytes": 9461,
     "media_checkins": 0,
     "media_embedded_checkins": 0,
-    "input_zip_path": "admin\\test\\cases\\data\\logarchive\\testdata.logarchive.logarchive.case_synthetic_network.zip",
-    "start_time": "2026-10-20T06:50:08.448177+00:00",
-    "end_time": "2026-10-20T06:50:08.573335+00:00",
-    "run_time_seconds": 0.016518354415893555,
+    "input_zip_path": "admin/test/cases/data/logarchive/testdata.logarchive.logarchive.case_synthetic_network.zip",
+    "start_time": "2026-10-20T14:50:16.176868+00:00",
+    "end_time": "2026-10-20T14:50:16.313354+00:00",
+    "run_time_seconds": 0.016755104064941406,
     "last_commit": {
-      "hash": "fddd33b2436def34272799036edc6dad41208fec",
-      "author_name": "Brigs",
-      "author_email": "abrignoni@gmail.com",
-      "date": "2026-10-18T16:20:57-04:00",
-      "message": "executed apps: restate notes on 14 images, name the column Application"
+      "hash": "b71f6ecdb4b7a6a5095d6953705bd1555179b19a",
+      "author_name": "danjethh",
+      "author_email": "danjethh@gmail.com",
+      "date": "2026-10-20T10:31:43-04:00",
+      "message": "logarchive: network connection attribution and NetworkExtension session event artifacts"
     }
   },
   "headers": [
